@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Cotton price prediction</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+
+ <div class="login">
+	<h1>Prediction of future modal price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input id="month" type="text" name="days" placeholder="Number of days" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+    </form>
+    {{ prediction_text }}
+
+    <button type="submit" id="change" class="btn btn-primary btn-block btn-large">Graph Results</button>
+   <div id = "result">
+
+  </div>
+   <!-- <img id="dis" style="width: 130%; float: left;" src="{{url_for('static', filename='{{output}}.JPG')}}"> -->
+ </div>
+<script>
+  
+  document.getElementById("change").addEventListener("click",chan);
+  
+
+  
+  function chan(){
+    // document.getElementById('result').innerHTML = ""
+    // document.getElementById('dis').src = "{{url_for('static', filename='october.JPG')}}"
+    document.getElementById('result').innerHTML = `<img id="dis" style="width: 100%; float: left;" src="{{url_for('static', filename='1.JPG')}}">` 
+
+  }
+
+
+</script>
+
+</body>
+</html>
